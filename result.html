@@ -36,7 +36,7 @@
       document.getElementById("desc").innerText = results[c].message;
 
       async function close() {
-        liff.closeWindow();
+        window.location.href = `index_temp_1.html?c=${choice}`;
       }
 
       async function getProfile() {
