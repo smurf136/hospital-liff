@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -12,7 +12,7 @@
     </style>
   </head>
   <body>
-    <div id="lineprofile" style="display: none;">
+    <div id="lineprofile" style="display: none">
       <img width="100px" id="profileImage" src="" />
       <div>
         Hello <b><span id="profileName">Name</span></b>
@@ -42,6 +42,13 @@
 
           // show profile
           lineprofile.style.display = "block";
+
+          await liff.sendMessages([
+            {
+              type: "text",
+              text: "test",
+            },
+          ]);
         } else {
           liff.login();
         }
