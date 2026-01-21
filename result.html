@@ -8,7 +8,7 @@
   <body>
     <h2 id="title"></h2>
     <p id="desc"></p>
-
+    <p id="error"></p>
     <button onclick="send()">Send to LINE</button>
 
     <script>
@@ -34,16 +34,20 @@
       document.getElementById("desc").innerText = results[c].message;
 
       async function send() {
-        await liff.init({ liffId: "2008942006-tbQFVRAB" });
+        try {
+          await liff.init({ liffId: "2008942006-tbQFVRAB" });
 
-        await liff.sendMessages([
-          {
-            type: "text",
-            text: results[c].message,
-          },
-        ]);
+          await liff.sendMessages([
+            {
+              type: "text",
+              text: results[c].message,
+            },
+          ]);
 
-        liff.closeWindow();
+          liff.closeWindow();
+        } catch (e) {
+          document.getElementById("error").innerText = e;
+        }
       }
     </script>
   </body>
