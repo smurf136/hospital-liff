@@ -19,27 +19,46 @@
       </div>
       <div>UID <span id="profileUID">UID</span></div>
 
-      <h2 id="title"></h2>
-      <p id="desc"></p>
+      <h2>Select one</h2>
+
+      <button onclick="go('A')">Option A</button>
+      <button onclick="go('B')">Option B</button>
+      <button onclick="go('C')">Option C</button>
+
+      <!-- <h2 id="title"></h2>
+      <p id="desc"></p> -->
     </div>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
       let userId = "";
 
-      //   const results = {
-      //     A: {
-      //       title: "Result A",
-      //       message: "You selected A – static result",
-      //     },
-      //     B: {
-      //       title: "Result B",
-      //       message: "You selected B – static result",
-      //     },
-      //     C: {
-      //       title: "Result C",
-      //       message: "You selected C – static result",
-      //     },
-      //   };
+      const go = async (choice) => {
+        const results = {
+          A: {
+            title: "Result A",
+            message: "You selected A – static result",
+          },
+          B: {
+            title: "Result B",
+            message: "You selected B – static result",
+          },
+          C: {
+            title: "Result C",
+            message: "You selected C – static result",
+          },
+        };
+
+        await liff.sendMessages([
+          // {
+          //   type: "text",
+          //   text: "test",
+          // },
+          {
+            type: "text",
+            text: results[choice].message,
+          },
+        ]);
+      };
 
       //   const close = () => {
       //     window.location.href = `index.html?c=${choice}`;
