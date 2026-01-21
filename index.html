@@ -18,11 +18,13 @@
         Hello <b><span id="profileName">Name</span></b>
       </div>
       <div>UID <span id="profileUID">UID</span></div>
+      <button onclick="close()">close</button>
     </div>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
       let userId = "";
 
+      
       const close = () => {
         window.location.href = `index.html?c=${choice}`;
       };
