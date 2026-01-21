@@ -59,14 +59,14 @@
           profileName.innerText = profile.displayName;
           profileUID.innerText = profile.userId;
 
-          try {
-            const params = new URLSearchParams(location.search);
-            const c = params.get("c");
-            title = results[c].title;
-            desc = results[c].message;
-          } catch (e) {
-            alert(e);
-          }
+        //   try {
+        //     const params = new URLSearchParams(location.search);
+        //     const c = params.get("c");
+        //     title = results[c].title;
+        //     desc = results[c].message;
+        //   } catch (e) {
+        //     alert(e);
+        //   }
 
           // collect userId
           userId = profile.userId;
@@ -79,10 +79,10 @@
               type: "text",
               text: "test",
             },
-            {
-              type: "text",
-              text: results[c].message,
-            },
+            // {
+            //   type: "text",
+            //   text: results[c].message,
+            // },
           ]);
         } else {
           liff.login();
