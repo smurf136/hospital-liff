@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Choose</title>
+</head>
+<body>
+
+<h2>Select one</h2>
+
+<button onclick="go('A')">Option A</button>
+<button onclick="go('B')">Option B</button>
+<button onclick="go('C')">Option C</button>
+
+<script>
+function go(choice) {
+  window.location.href = `result.html?c=${choice}`;
+}
+</script>
+
+</body>
+</html>
