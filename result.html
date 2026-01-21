@@ -12,6 +12,7 @@
     <p id="error"></p>
     <button onclick="send()">Send to LINE</button>
     <button onclick="getProfile()">getProfile</button>
+    <button onclick="close()">close</button>
 
     <script>
       const results = {
@@ -34,6 +35,10 @@
 
       document.getElementById("title").innerText = results[c].title;
       document.getElementById("desc").innerText = results[c].message;
+
+      async function close() {
+        liff.closeWindow();
+      }
 
       async function getProfile() {
         try {
