@@ -58,6 +58,7 @@
             text: results[choice].message,
           },
         ]);
+        liff.closeWindow();
       };
 
       //   const close = () => {
@@ -93,16 +94,16 @@
           // show profile
           lineprofile.style.display = "block";
 
-          await liff.sendMessages([
-            {
-              type: "text",
-              text: "test",
-            },
-            // {
-            //   type: "text",
-            //   text: results[c].message,
-            // },
-          ]);
+          // await liff.sendMessages([
+          //   {
+          //     type: "text",
+          //     text: "test",
+          //   },
+          //   // {
+          //   //   type: "text",
+          //   //   text: results[c].message,
+          //   // },
+          // ]);
         } else {
           liff.login();
         }
