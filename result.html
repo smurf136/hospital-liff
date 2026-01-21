@@ -41,26 +41,30 @@
       }
 
       async function getProfile() {
-        // liff
-        //   .init({
-        //     liffId: "2008942006-tbQFVRAB", // Use own liffId
-        //   })
-        //   .then(() => {
-        //     liff
-        //       .getProfile()
-        //       .then((e) => (document.getElementById("profile").innerText = e));
-        //     // start to use LIFF's api
-        //   })
-        //   .catch((err) => {
-        //     console.log(err);
-        //     document.getElementById("profile").innerText = `err: ${err}`;
-        //   });
-        // try {
-        //   await liff.init({ liffId: "2008942006-tbQFVRAB" });
-        //     await
-        // } catch (e) {
-        //   document.getElementById("profile").innerText = `err: ${e}`;
-        // }
+        await liff.init({ liffId: "2008942006-tbQFVRAB" });
+        if (liff.isLoggedIn()) {
+          const profile = await liff.getProfile();
+          profile.innerText = profile.displayName;
+          // update profile
+          //   profileImage.src = profile.pictureUrl;
+          //   profileName.innerText = profile.displayName;
+          //   profileUID.innerText = profile.userId;
+
+          // collect userId
+          //   userId = profile.userId;
+
+          // show profile
+          lineprofile.style.display = "block";
+
+          await liff.sendMessages([
+            {
+              type: "text",
+              text: "test",
+            },
+          ]);
+        } else {
+          liff.login();
+        }
       }
 
       async function send() {
