@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Result</title>
+    <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
+  </head>
+  <body>
+    <h2 id="title"></h2>
+    <p id="desc"></p>
+
+    <button onclick="send()">Send to LINE</button>
+
+    <script>
+      const results = {
+        A: {
+          title: "Result A",
+          message: "You selected A – static result",
+        },
+        B: {
+          title: "Result B",
+          message: "You selected B – static result",
+        },
+        C: {
+          title: "Result C",
+          message: "You selected C – static result",
+        },
+      };
+
+      const params = new URLSearchParams(location.search);
+      const c = params.get("c");
+
+      document.getElementById("title").innerText = results[c].title;
+      document.getElementById("desc").innerText = results[c].message;
+
+      async function send() {
+        await liff.init({ liffId: "YOUR_LIFF_ID" });
+
+        await liff.sendMessages([
+          {
+            type: "text",
+            text: results[c].message,
+          },
+        ]);
+
+        liff.closeWindow();
+      }
+    </script>
+  </body>
+</html>
