@@ -11,6 +11,7 @@
     <p id="desc"></p>
     <p id="error"></p>
     <button onclick="send()">Send to LINE</button>
+    <button onclick="getProfile()">getProfile</button>
 
     <script>
       const results = {
@@ -34,18 +35,19 @@
       document.getElementById("title").innerText = results[c].title;
       document.getElementById("desc").innerText = results[c].message;
 
-      liff.init({ liffId: "2008942006-tbQFVRAB" }).then((e) =>
-        liff
-          .getProfile()
-          .then((e) => (document.getElementById("profile").innerText = e))
-          .catch(
-            (e) =>
-              (document.getElementById("profile").innerText = `err: ${err}`)
-          )
-      );
+      async function getProfile() {
+        try {
+          await liff.init({ liffId: "2008942006-tbQFVRAB" });
+          document.getElementById("profile").innerText =
+            await liff.getProfile();
+        } catch (e) {
+          document.getElementById("profile").innerText = `err: ${e}`;
+        }
+      }
 
       async function send() {
         try {
+          await liff.init({ liffId: "2008942006-tbQFVRAB" });
           var test = await liff.sendMessages([
             {
               type: "text",
