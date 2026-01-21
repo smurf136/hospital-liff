@@ -13,47 +13,52 @@
     <button onclick="send()">Send to LINE</button>
 
     <script>
-       const results = {
-         A: {
-           title: "Result A",
-           message: "You selected A – static result",
-         },
-         B: {
-           title: "Result B",
-           message: "You selected B – static result",
-         },
-         C: {
-           title: "Result C",
-           message: "You selected C – static result",
-         },
-       };
+      const results = {
+        A: {
+          title: "Result A",
+          message: "You selected A – static result",
+        },
+        B: {
+          title: "Result B",
+          message: "You selected B – static result",
+        },
+        C: {
+          title: "Result C",
+          message: "You selected C – static result",
+        },
+      };
 
-       await liff.init({ liffId: "2008942006-tbQFVRAB" });
+      const params = new URLSearchParams(location.search);
+      const c = params.get("c");
 
-       const params = new URLSearchParams(location.search);
-       const c = params.get("c");
+      document.getElementById("title").innerText = results[c].title;
+      document.getElementById("desc").innerText = results[c].message;
 
-       document.getElementById("title").innerText = results[c].title;
-       document.getElementById("desc").innerText = results[c].message;
+      liff.init({ liffId: "2008942006-tbQFVRAB" }).then((e) =>
+        liff
+          .getProfile()
+          .then((e) => (document.getElementById("profile").innerText = e))
+          .catch(
+            (e) =>
+              (document.getElementById("profile").innerText = `err: ${err}`)
+          )
+      );
 
-      liff.getProfile().then((e) => document.getElementById('profile').innerText = e).catch((e) => document.getElementById('profile').innerText = `err: ${err}`)
+      async function send() {
+        try {
+          var test = await liff.sendMessages([
+            {
+              type: "text",
+              text: results[c].message,
+            },
+          ]);
 
-       async function send() {
-         try {
-
-           var test = await liff.sendMessages([
-             {
-               type: "text",
-               text: results[c].message,
-             },
-           ]);
-
-           document.getElementById("error").innerText = `test: ${test}`;
-           liff.closeWindow();
-         } catch (e) {
-           document.getElementById("error").innerText = e;
-         }
-       }
+          document.getElementById("error").innerText = `test: ${test}`;
+          liff.closeWindow();
+        } catch (e) {
+          document.getElementById("error").innerText = e;
+        }
+      }
     </script>
   </body>
 </html>
