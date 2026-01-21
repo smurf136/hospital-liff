@@ -67,15 +67,19 @@
       async function send() {
         try {
           await liff.init({ liffId: "2008942006-tbQFVRAB" });
-          var test = await liff.sendMessages([
-            {
-              type: "text",
-              text: results[c].message,
-            },
-          ]);
+          if (liff.isLoggedIn()) {
+            var test = await liff.sendMessages([
+              {
+                type: "text",
+                text: results[c].message,
+              },
+            ]);
 
-          document.getElementById("error").innerText = `test: ${test}`;
-          liff.closeWindow();
+            document.getElementById("error").innerText = `test: ${test}`;
+            liff.closeWindow();
+          } else {
+            liff.login();
+          }
         } catch (e) {
           document.getElementById("error").innerText = e;
         }
