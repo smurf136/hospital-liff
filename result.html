@@ -6,50 +6,54 @@
     <script src="https://static.line-scdn.net/liff/edge/2.1/sdk.js"></script>
   </head>
   <body>
+    <h1 id="profile"></h1>
     <h2 id="title"></h2>
     <p id="desc"></p>
     <p id="error"></p>
     <button onclick="send()">Send to LINE</button>
 
     <script>
-      const results = {
-        A: {
-          title: "Result A",
-          message: "You selected A – static result",
-        },
-        B: {
-          title: "Result B",
-          message: "You selected B – static result",
-        },
-        C: {
-          title: "Result C",
-          message: "You selected C – static result",
-        },
-      };
+       const results = {
+         A: {
+           title: "Result A",
+           message: "You selected A – static result",
+         },
+         B: {
+           title: "Result B",
+           message: "You selected B – static result",
+         },
+         C: {
+           title: "Result C",
+           message: "You selected C – static result",
+         },
+       };
 
-      const params = new URLSearchParams(location.search);
-      const c = params.get("c");
+       await liff.init({ liffId: "2008942006-tbQFVRAB" });
 
-      document.getElementById("title").innerText = results[c].title;
-      document.getElementById("desc").innerText = results[c].message;
+       const params = new URLSearchParams(location.search);
+       const c = params.get("c");
 
-      async function send() {
-        try {
-          await liff.init({ liffId: "2008942006-tbQFVRAB" });
+       document.getElementById("title").innerText = results[c].title;
+       document.getElementById("desc").innerText = results[c].message;
 
-          var test = await liff.sendMessages([
-            {
-              type: "text",
-              text: results[c].message,
-            },
-          ]);
+      liff.getProfile().then((e) => document.getElementById('profile').innerText = e).catch((e) => document.getElementById('profile').innerText = `err: ${err}`)
 
-          document.getElementById("error").innerText = `test: ${test}`;
-          liff.closeWindow();
-        } catch (e) {
-          document.getElementById("error").innerText = e;
-        }
-      }
+       async function send() {
+         try {
+
+           var test = await liff.sendMessages([
+             {
+               type: "text",
+               text: results[c].message,
+             },
+           ]);
+
+           document.getElementById("error").innerText = `test: ${test}`;
+           liff.closeWindow();
+         } catch (e) {
+           document.getElementById("error").innerText = e;
+         }
+       }
     </script>
   </body>
 </html>
