@@ -37,13 +37,14 @@
         try {
           await liff.init({ liffId: "2008942006-tbQFVRAB" });
 
-          await liff.sendMessages([
+          var test = await liff.sendMessages([
             {
               type: "text",
               text: results[c].message,
             },
           ]);
 
+          document.getElementById("error").innerText = `test: ${test}`;
           liff.closeWindow();
         } catch (e) {
           document.getElementById("error").innerText = e;
