@@ -35,9 +35,9 @@
       document.getElementById("title").innerText = results[c].title;
       document.getElementById("desc").innerText = results[c].message;
 
-      async function close() {
+      const close = () => {
         window.location.href = `index_temp_1.html?c=${choice}`;
-      }
+      };
 
       async function getProfile() {
         await liff.init({ liffId: "2008942006-tbQFVRAB" });
