@@ -41,14 +41,14 @@
         },
       };
 
-      const close = () => {
-        window.location.href = `index.html?c=${choice}`;
-      };
+      //   const close = () => {
+      //     window.location.href = `index.html?c=${choice}`;
+      //   };
 
-      const logOut = () => {
-        liff.logout();
-        window.location.reload();
-      };
+      //   const logOut = () => {
+      //     liff.logout();
+      //     window.location.reload();
+      //   };
       const main = async () => {
         await liff.init({ liffId: "2008942006-tbQFVRAB" });
         if (liff.isLoggedIn()) {
@@ -59,10 +59,14 @@
           profileName.innerText = profile.displayName;
           profileUID.innerText = profile.userId;
 
-          const params = new URLSearchParams(location.search);
-          const c = params.get("c");
-          title = results[c].title;
-          desc = results[c].message;
+          try {
+            const params = new URLSearchParams(location.search);
+            const c = params.get("c");
+            title = results[c].title;
+            desc = results[c].message;
+          } catch (e) {
+            alert(e);
+          }
 
           // collect userId
           userId = profile.userId;
