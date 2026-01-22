@@ -210,9 +210,9 @@
             placeRegister = "ตึก 400 เตียง";
           }
 
-          document.getElementById("screeningResult").innerText = result;
+          document.getElementById("screeningResult")?.innerText = result;
         } catch (e) {
-          document.getElementById("screeningResult").innerText = "err";
+          document.getElementById("screeningResult")?.innerText = "err";
         }
         try {
           var profile = {
@@ -220,20 +220,20 @@
             text: [
               `ข้อมูลเด็ก`,
               `ชื่อ-นามสกุล: ${
-                document.getElementById("childFirstName").innerText ?? "-"
-              } ${document.getElementById("childLastName").innerText ?? "-"}`,
+                document.getElementById("childFirstName")?.innerText ?? "-"
+              } ${document.getElementById("childLastName")?.innerText ?? "-"}`,
               `วันเดือนปีเกิด: ${
-                document.getElementById("dateOfBirth").innerText ?? "-"
+                document.getElementById("dateOfBirth")?.innerText ?? "-"
               }`,
               `อายุ (เดือน): ${
-                document.getElementById("ageMonth").innerText ?? "-"
+                document.getElementById("ageMonth")?.innerText ?? "-"
               }`,
               `ข้อมูลผู้ปกครอง`,
               `ชื่อ-นามสกุล: ${
-                document.getElementById("guardianName").innerText ?? "-"
+                document.getElementById("guardianName")?.innerText ?? "-"
               }`,
               `เบอร์ติดต่อ: ${
-                document.getElementById("guardianPhone").innerText ?? "-"
+                document.getElementById("guardianPhone")?.innerText ?? "-"
               }`,
             ].join("\n"),
           };
@@ -250,7 +250,7 @@
           var purpose = {
             type: "text",
             text: `วัตถุประสงค์การมาพบแพทย์: ${
-              document.getElementById("result").innerText ?? "-"
+              document.getElementById("result")?.innerText ?? "-"
             }`,
           };
 
@@ -293,8 +293,8 @@
           document.getElementById("evaluate").onclick = evaluate;
           // update profile
           profileImage.src = profile.pictureUrl;
-          profileName.innerText = profile.displayName;
-          profileUID.innerText = profile.userId;
+          profileName?.innerText = profile.displayName;
+          profileUID?.innerText = profile.userId;
 
           //   try {
           //     const params = new URLSearchParams(location.search);
