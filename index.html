@@ -150,7 +150,7 @@
     <script>
       let userId = "";
 
-      function formatDate(dateValue) {
+      const formatDate = (dateValue) => {
         if (!dateValue) return "-g";
 
         const date = new Date(dateValue);
@@ -160,7 +160,7 @@
           month: "short",
           year: "numeric",
         });
-      }
+      };
 
       const go = async (choice) => {
         const results = {
