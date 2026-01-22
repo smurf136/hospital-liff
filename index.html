@@ -151,6 +151,8 @@
       let userId = "";
 
       function formatDate(dateValue) {
+        if (!dateValue) return '-';
+
         const date = new Date(dateValue);
 
         return date.toLocaleDateString("en-GB", {
@@ -210,9 +212,9 @@
             placeRegister = "ตึก 400 เตียง";
           }
 
-          document.getElementById("screeningResult")?.innerText = result;
+          document.getElementById("screeningResult").innerText = result;
         } catch (e) {
-          document.getElementById("screeningResult")?.innerText = "err";
+          document.getElementById("screeningResult").innerText = "err";
         }
         try {
           var profile = {
