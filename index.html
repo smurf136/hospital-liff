@@ -199,51 +199,59 @@
         }
 
         document.getElementById("screeningResult").innerText = result;
-
-        var profile = {
-          type: "text",
-          text: [
-            `ข้อมูลเด็ก`,
-            `ชื่อ-นามสกุล: ${document.getElementById(
-              "childFirstName"
-            )} ${document.getElementById("childLastName")}`,
-            `วันเดือนปีเกิด: ${document.getElementById("dateOfBirth")}`,
-            `อายุ (เดือน): ${document.getElementById("ageMonth")}`,
-            `ข้อมูลผู้ปกครอง`,
-            `ชื่อ-นามสกุล: ${document.getElementById("guardianName")}`,
-            `เบอร์ติดต่อ: ${document.getElementById("guardianPhone")}`,
-          ].join("\n"),
-        };
-        var appointment = {
-          type: "text",
-          text: [
-            `วันเวลาที่นัดหมาย`,
-            `${document.getElementById(
-              "appointmentDate"
-            )} ${document.getElementById("appointmentTime")}`,
-          ].join("\n"),
-        };
-
-        var purpose = {
-          type: "text",
-          text: `วัตถุประสงค์การมาพบแพทย์: ${document.getElementById(
-            "result"
-          )}`,
-        };
-
-        var place = {
-          type: "text",
-          text: `ให้ผู้ปกครองไปติดต่อที่ ${document.getElementById(
-            "placeRegister"
-          )} ตามวันเวลาที่ทำการนัดหมาย`,
-        };
         try {
-          await liff.init({ liffId: "2008942006-tbQFVRAB" });
+          var profile = {
+            type: "text",
+            text: [
+              `ข้อมูลเด็ก`,
+              `ชื่อ-นามสกุล: ${document.getElementById(
+                "childFirstName"
+              )} ${document.getElementById("childLastName")}`,
+              `วันเดือนปีเกิด: ${document.getElementById("dateOfBirth")}`,
+              `อายุ (เดือน): ${document.getElementById("ageMonth")}`,
+              `ข้อมูลผู้ปกครอง`,
+              `ชื่อ-นามสกุล: ${document.getElementById("guardianName")}`,
+              `เบอร์ติดต่อ: ${document.getElementById("guardianPhone")}`,
+            ].join("\n"),
+          };
+          var appointment = {
+            type: "text",
+            text: [
+              `วันเวลาที่นัดหมาย`,
+              `${document.getElementById(
+                "appointmentDate"
+              )} ${document.getElementById("appointmentTime")}`,
+            ].join("\n"),
+          };
+
+          var purpose = {
+            type: "text",
+            text: `วัตถุประสงค์การมาพบแพทย์: ${document.getElementById(
+              "result"
+            )}`,
+          };
+
+          var place = {
+            type: "text",
+            text: `ให้ผู้ปกครองไปติดต่อที่ ${document.getElementById(
+              "placeRegister"
+            )} ตามวันเวลาที่ทำการนัดหมาย`,
+          };
+
+          // await liff.init({ liffId: "2008942006-tbQFVRAB" });
           if (liff.isLoggedIn()) {
             await liff.sendMessages([profile, appointment, purpose, place]);
           }
+          liff.closeWindow();
         } catch (e) {
-          alert(`err: ${document.getElementById("e")}`);
+          await liff.sendMessages([
+            {
+              type: "text",
+              text: `err: ${e}`,
+            },
+          ]);
+          liff.closeWindow();
+          // alert(`err: ${document.getElementById("e")}`);
         }
       }
 
