@@ -251,6 +251,40 @@
             text: `วัตถุประสงค์การมาพบแพทย์: ${result}`,
           };
 
+          let isSick = result === "🔴 กลุ่มป่วย / มีอาการ ต้องคัดกรองเร่งด่วน";
+
+          let symptom = [];
+
+          if (isSick) {
+            if (document.getElementById("highFever")?.checked) {
+              symptom.push("มีไข้สูง (≥ 38°C)");
+            }
+            if (document.getElementById("cough")?.checked) {
+              symptom.push("ไอ");
+            }
+            if (document.getElementById("runnyNose")?.checked) {
+              symptom.push("น้ำมูก");
+            }
+            if (document.getElementById("vomit")?.checked) {
+              symptom.push("อาเจียน");
+            }
+            if (document.getElementById("diarrhea")?.checked) {
+              symptom.push("ท้องเสีย");
+            }
+            if (document.getElementById("lethargy")?.checked) {
+              symptom.push("ซึม / ไม่ร่าเริง");
+            }
+
+            if (!!document.getElementById("symptomNote")) {
+              symptom.push(document.getElementById("symptomNote")?.value ?? "");
+            }
+          }
+
+          var symptomReport = {
+            type: "text",
+            text: `มีอาการ: ${symptom.join(", ")}`,
+          };
+
           var place = {
             type: "text",
             text: `ให้ผู้ปกครองไปติดต่อที่ ${placeRegister} ตามวันเวลาที่ทำการนัดหมาย`,
@@ -258,7 +292,11 @@
 
           // await liff.init({ liffId: "2008942006-tbQFVRAB" });
           if (liff.isLoggedIn()) {
-            await liff.sendMessages([profile, appointment, purpose, place]);
+            let liffMessage = [profile, appointment, purpose, place];
+            if (isSick) {
+              liffMessage.splice(3, 0, symptomReport);
+            }
+            await liff.sendMessages([]);
           }
           liff.closeWindow();
         } catch (e) {
