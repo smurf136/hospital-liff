@@ -25,6 +25,144 @@
       <button onclick="go('B')">Option B</button>
       <button onclick="go('C')">Option C</button>
 
+      <h2>แบบฟอร์มคัดกรองผู้ป่วย</h2>
+
+      <form id="patientForm">
+        <!-- ข้อมูลผู้ป่วย -->
+        <fieldset>
+          <legend>ข้อมูลผู้ป่วย</legend>
+
+          <label for="firstName">ชื่อ</label><br />
+          <input
+            type="text"
+            id="firstName"
+            name="firstName"
+            required
+          /><br /><br />
+
+          <label for="lastName">นามสกุล</label><br />
+          <input
+            type="text"
+            id="lastName"
+            name="lastName"
+            required
+          /><br /><br />
+
+          <label for="dateOfBirth">วันเดือนปีเกิด</label><br />
+          <input
+            type="date"
+            id="dateOfBirth"
+            name="dateOfBirth"
+            required
+          /><br /><br />
+
+          <label for="gender">เพศ</label><br />
+          <select id="gender" name="gender">
+            <option value="">-- เลือก --</option>
+            <option value="male">ชาย</option>
+            <option value="female">หญิง</option>
+            <option value="other">อื่น ๆ</option></select
+          ><br /><br />
+
+          <label for="phoneNumber">เบอร์โทรศัพท์</label><br />
+          <input
+            type="tel"
+            id="phoneNumber"
+            name="phoneNumber"
+            placeholder="08xxxxxxxx"
+          /><br /><br />
+        </fieldset>
+
+        <br />
+
+        <!-- ข้อมูลการแพ้ -->
+        <fieldset>
+          <legend>ข้อมูลการแพ้</legend>
+
+          <label for="drugAllergy">ยาที่แพ้</label><br />
+          <textarea
+            id="drugAllergy"
+            name="drugAllergy"
+            rows="3"
+            placeholder="เช่น พาราเซตามอล, เพนนิซิลลิน"
+          ></textarea
+          ><br /><br />
+
+          <label for="foodAllergy">อาหารที่แพ้</label><br />
+          <textarea
+            id="foodAllergy"
+            name="foodAllergy"
+            rows="3"
+            placeholder="เช่น กุ้ง, ถั่วลิสง"
+          ></textarea
+          ><br /><br />
+        </fieldset>
+
+        <br />
+
+        <!-- ข้อมูลผู้ปกครอง -->
+        <fieldset>
+          <legend>ข้อมูลผู้ปกครอง / ผู้ดูแล</legend>
+
+          <label for="guardianName">ชื่อผู้ปกครอง</label><br />
+          <input
+            type="text"
+            id="guardianName"
+            name="guardianName"
+          /><br /><br />
+
+          <label for="guardianRelation">ความสัมพันธ์กับผู้ป่วย</label><br />
+          <input
+            type="text"
+            id="guardianRelation"
+            name="guardianRelation"
+            placeholder="เช่น บิดา, มารดา, ผู้ดูแล"
+          /><br /><br />
+
+          <label for="guardianPhone">เบอร์โทรผู้ปกครอง</label><br />
+          <input
+            type="tel"
+            id="guardianPhone"
+            name="guardianPhone"
+          /><br /><br />
+        </fieldset>
+
+        <br />
+
+        <!-- ข้อมูลสุขภาพเพิ่มเติม -->
+        <fieldset>
+          <legend>ข้อมูลสุขภาพเพิ่มเติม</legend>
+
+          <label for="chronicDisease">โรคประจำตัว</label><br />
+          <textarea
+            id="chronicDisease"
+            name="chronicDisease"
+            rows="3"
+          ></textarea
+          ><br /><br />
+
+          <label for="currentMedication">ยาที่ใช้อยู่ปัจจุบัน</label><br />
+          <textarea
+            id="currentMedication"
+            name="currentMedication"
+            rows="3"
+          ></textarea
+          ><br /><br />
+
+          <label for="additionalNote">หมายเหตุเพิ่มเติม</label><br />
+          <textarea
+            id="additionalNote"
+            name="additionalNote"
+            rows="3"
+          ></textarea
+          ><br /><br />
+        </fieldset>
+
+        <br />
+
+        <button type="submit" id="submitButton">บันทึกข้อมูล</button>
+      </form>
+
       <!-- <h2 id="title"></h2>
       <p id="desc"></p> -->
     </div>
