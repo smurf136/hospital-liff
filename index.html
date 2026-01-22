@@ -282,7 +282,7 @@
 
           var symptomReport = {
             type: "text",
-            text: `มีอาการ: ${symptom.join(", ")}`,
+            text: `มีอาการ: ${symptom.length ? symptom.join(", ") : "-"}`,
           };
 
           var place = {
@@ -296,7 +296,7 @@
             if (isSick) {
               liffMessage.splice(3, 0, symptomReport);
             }
-            await liff.sendMessages([]);
+            await liff.sendMessages(liffMessage);
           }
           liff.closeWindow();
         } catch (e) {
