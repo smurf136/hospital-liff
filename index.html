@@ -180,26 +180,30 @@
       };
 
       const evaluate = async () => {
-        const visitType = document.querySelector(
-          'input[name="visitType"]:checked'
-        )?.value;
-        const highFever = document.getElementById("highFever").checked;
-        const lethargy = document.getElementById("lethargy").checked;
+        try {
+          const visitType = document.querySelector(
+            'input[name="visitType"]:checked'
+          )?.value;
+          const highFever = document.getElementById("highFever").checked;
+          const lethargy = document.getElementById("lethargy").checked;
 
-        let result = "🟢 กลุ่มมาฉีดวัคซีน / ตรวจตามนัด";
-        let placeRegister = "อาคาร 17 ไร่";
+          let result = "🟢 กลุ่มมาฉีดวัคซีน / ตรวจตามนัด";
+          let placeRegister = "อาคาร 17 ไร่";
 
-        if (visitType === "consult") {
-          result = "🟡 กลุ่มมาปรึกษาแพทย์";
-          placeRegister = "ตึก 100 เตียง";
+          if (visitType === "consult") {
+            result = "🟡 กลุ่มมาปรึกษาแพทย์";
+            placeRegister = "ตึก 100 เตียง";
+          }
+
+          if (visitType === "sick" || highFever || lethargy) {
+            result = "🔴 กลุ่มป่วย / มีอาการ ต้องคัดกรองเร่งด่วน";
+            placeRegister = "ตึก 400 เตียง";
+          }
+
+          document.getElementById("screeningResult").innerText = result;
+        } catch (e) {
+          document.getElementById("screeningResult").innerText = "err";
         }
-
-        if (visitType === "sick" || highFever || lethargy) {
-          result = "🔴 กลุ่มป่วย / มีอาการ ต้องคัดกรองเร่งด่วน";
-          placeRegister = "ตึก 400 เตียง";
-        }
-
-        document.getElementById("screeningResult").innerText = result;
         try {
           var profile = {
             type: "text",
