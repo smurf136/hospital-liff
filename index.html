@@ -139,9 +139,7 @@
 
         <br />
 
-        <button type="button" onclick="evaluate('test')">
-          ประเมินผลคัดกรอง
-        </button>
+        <button type="button" onclick="evaluate()">ประเมินผลคัดกรอง</button>
         <button type="button" onclick="go('A')">test</button>
       </form>
 
@@ -181,7 +179,7 @@
         liff.closeWindow();
       };
 
-      const evaluate = async (test) => {
+      const evaluate = async () => {
         try {
           const visitType = document.querySelector(
             'input[name="visitType"]:checked'
