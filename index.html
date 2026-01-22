@@ -282,7 +282,11 @@
 
           var symptomReport = {
             type: "text",
-            text: `มีอาการ: ${symptom.length ? symptom.join(", ") : "-"}`,
+            text: `มีอาการ: ${
+              symptom.length
+                ? symptom.filter((e) => e.length > 0).join(", ")
+                : "-"
+            }`,
           };
 
           var place = {
