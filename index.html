@@ -204,38 +204,46 @@
           type: "text",
           text: [
             `ข้อมูลเด็ก`,
-            `ชื่อ-นามสกุล: ${childFirstName} ${childLastName}`,
-            `วันเดือนปีเกิด: ${dateOfBirth}`,
-            `อายุ (เดือน): ${ageMonth}`,
+            `ชื่อ-นามสกุล: ${document.getElementById(
+              "childFirstName"
+            )} ${document.getElementById("childLastName")}`,
+            `วันเดือนปีเกิด: ${document.getElementById("dateOfBirth")}`,
+            `อายุ (เดือน): ${document.getElementById("ageMonth")}`,
             `ข้อมูลผู้ปกครอง`,
-            `ชื่อ-นามสกุล: ${guardianName}`,
-            `เบอร์ติดต่อ: ${guardianPhone}`,
+            `ชื่อ-นามสกุล: ${document.getElementById("guardianName")}`,
+            `เบอร์ติดต่อ: ${document.getElementById("guardianPhone")}`,
           ].join("\n"),
         };
         var appointment = {
           type: "text",
           text: [
             `วันเวลาที่นัดหมาย`,
-            `${appointmentDate} ${appointmentTime}`,
+            `${document.getElementById(
+              "appointmentDate"
+            )} ${document.getElementById("appointmentTime")}`,
           ].join("\n"),
         };
 
         var purpose = {
           type: "text",
-          text: `วัตถุประสงค์การมาพบแพทย์: ${result}`,
+          text: `วัตถุประสงค์การมาพบแพทย์: ${document.getElementById(
+            "result"
+          )}`,
         };
 
         var place = {
           type: "text",
-          text: `ให้ผู้ปกครองไปติดต่อที่ ${placeRegister} ตามวันเวลาที่ทำการนัดหมาย`,
+          text: `ให้ผู้ปกครองไปติดต่อที่ ${document.getElementById(
+            "placeRegister"
+          )} ตามวันเวลาที่ทำการนัดหมาย`,
         };
         try {
           await liff.init({ liffId: "2008942006-tbQFVRAB" });
           if (liff.isLoggedIn()) {
+            await liff.sendMessages([profile, appointment, purpose, place]);
           }
-          await liff.sendMessages([profile, appointment, purpose, place]);
         } catch (e) {
-          alert(`err: ${e}`);
+          alert(`err: ${document.getElementById("e")}`);
         }
       }
 
