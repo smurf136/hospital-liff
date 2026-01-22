@@ -219,20 +219,20 @@
             text: [
               `ข้อมูลเด็ก`,
               `ชื่อ-นามสกุล: ${
-                document.getElementById("childFirstName")?.innerText ?? "-"
-              } ${document.getElementById("childLastName")?.innerText ?? "-"}`,
+                document.getElementById("childFirstName")?.value ?? "-"
+              } ${document.getElementById("childLastName")?.value ?? "-"}`,
               `วันเดือนปีเกิด: ${
-                document.getElementById("dateOfBirth")?.innerText ?? "-"
+                document.getElementById("dateOfBirth")?.value ?? "-"
               }`,
               `อายุ (เดือน): ${
-                document.getElementById("ageMonth")?.innerText ?? "-"
+                document.getElementById("ageMonth")?.value ?? "-"
               }`,
               `ข้อมูลผู้ปกครอง`,
               `ชื่อ-นามสกุล: ${
-                document.getElementById("guardianName")?.innerText ?? "-"
+                document.getElementById("guardianName")?.value ?? "-"
               }`,
               `เบอร์ติดต่อ: ${
-                document.getElementById("guardianPhone")?.innerText ?? "-"
+                document.getElementById("guardianPhone")?.value ?? "-"
               }`,
             ].join("\n"),
           };
@@ -248,9 +248,7 @@
 
           var purpose = {
             type: "text",
-            text: `วัตถุประสงค์การมาพบแพทย์: ${
-              document.getElementById("result")?.innerText ?? "-"
-            }`,
+            text: `วัตถุประสงค์การมาพบแพทย์: ${result}`,
           };
 
           var place = {
