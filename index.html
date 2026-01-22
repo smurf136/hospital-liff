@@ -18,149 +18,128 @@
         Hello <b><span id="profileName">Name</span></b>
       </div>
       <div>UID <span id="profileUID">UID</span></div>
+      <h2>แบบฟอร์มคัดกรองเด็กเล็ก (แผนกคัดกรอง)</h2>
 
-      <h2>Select one</h2>
-
-      <button onclick="go('A')">Option A</button>
-      <button onclick="go('B')">Option B</button>
-      <button onclick="go('C')">Option C</button>
-
-      <h2>แบบฟอร์มคัดกรองผู้ป่วย</h2>
-
-      <form id="patientForm">
-        <!-- ข้อมูลผู้ป่วย -->
+      <form id="screeningForm">
+        <!-- ข้อมูลเด็ก -->
         <fieldset>
-          <legend>ข้อมูลผู้ป่วย</legend>
+          <legend>ข้อมูลเด็ก</legend>
 
-          <label for="firstName">ชื่อ</label><br />
-          <input
-            type="text"
-            id="firstName"
-            name="firstName"
-            required
-          /><br /><br />
+          <label for="childFirstName">ชื่อเด็ก</label><br />
+          <input type="text" id="childFirstName" required /><br /><br />
 
-          <label for="lastName">นามสกุล</label><br />
-          <input
-            type="text"
-            id="lastName"
-            name="lastName"
-            required
-          /><br /><br />
+          <label for="childLastName">นามสกุลเด็ก</label><br />
+          <input type="text" id="childLastName" required /><br /><br />
 
           <label for="dateOfBirth">วันเดือนปีเกิด</label><br />
-          <input
-            type="date"
-            id="dateOfBirth"
-            name="dateOfBirth"
-            required
-          /><br /><br />
+          <input type="date" id="dateOfBirth" required /><br /><br />
 
-          <label for="gender">เพศ</label><br />
-          <select id="gender" name="gender">
-            <option value="">-- เลือก --</option>
-            <option value="male">ชาย</option>
-            <option value="female">หญิง</option>
-            <option value="other">อื่น ๆ</option></select
-          ><br /><br />
-
-          <label for="phoneNumber">เบอร์โทรศัพท์</label><br />
-          <input
-            type="tel"
-            id="phoneNumber"
-            name="phoneNumber"
-            placeholder="08xxxxxxxx"
-          /><br /><br />
-        </fieldset>
-
-        <br />
-
-        <!-- ข้อมูลการแพ้ -->
-        <fieldset>
-          <legend>ข้อมูลการแพ้</legend>
-
-          <label for="drugAllergy">ยาที่แพ้</label><br />
-          <textarea
-            id="drugAllergy"
-            name="drugAllergy"
-            rows="3"
-            placeholder="เช่น พาราเซตามอล, เพนนิซิลลิน"
-          ></textarea
-          ><br /><br />
-
-          <label for="foodAllergy">อาหารที่แพ้</label><br />
-          <textarea
-            id="foodAllergy"
-            name="foodAllergy"
-            rows="3"
-            placeholder="เช่น กุ้ง, ถั่วลิสง"
-          ></textarea
-          ><br /><br />
+          <label for="ageMonth">อายุ (เดือน)</label><br />
+          <input type="number" id="ageMonth" min="0" /><br /><br />
         </fieldset>
 
         <br />
 
         <!-- ข้อมูลผู้ปกครอง -->
         <fieldset>
-          <legend>ข้อมูลผู้ปกครอง / ผู้ดูแล</legend>
+          <legend>ข้อมูลผู้ปกครอง</legend>
 
           <label for="guardianName">ชื่อผู้ปกครอง</label><br />
-          <input
-            type="text"
-            id="guardianName"
-            name="guardianName"
-          /><br /><br />
+          <input type="text" id="guardianName" required /><br /><br />
 
-          <label for="guardianRelation">ความสัมพันธ์กับผู้ป่วย</label><br />
-          <input
-            type="text"
-            id="guardianRelation"
-            name="guardianRelation"
-            placeholder="เช่น บิดา, มารดา, ผู้ดูแล"
-          /><br /><br />
-
-          <label for="guardianPhone">เบอร์โทรผู้ปกครอง</label><br />
-          <input
-            type="tel"
-            id="guardianPhone"
-            name="guardianPhone"
-          /><br /><br />
+          <label for="guardianPhone">เบอร์โทรศัพท์</label><br />
+          <input type="tel" id="guardianPhone" /><br /><br />
         </fieldset>
 
         <br />
 
-        <!-- ข้อมูลสุขภาพเพิ่มเติม -->
+        <!-- วัตถุประสงค์การมา -->
         <fieldset>
-          <legend>ข้อมูลสุขภาพเพิ่มเติม</legend>
+          <legend>วัตถุประสงค์การมา</legend>
 
-          <label for="chronicDisease">โรคประจำตัว</label><br />
-          <textarea
-            id="chronicDisease"
-            name="chronicDisease"
-            rows="3"
-          ></textarea
-          ><br /><br />
+          <input type="radio" id="visitSick" name="visitType" value="sick" />
+          <label for="visitSick">ป่วย / มีอาการ</label><br />
 
-          <label for="currentMedication">ยาที่ใช้อยู่ปัจจุบัน</label><br />
-          <textarea
-            id="currentMedication"
-            name="currentMedication"
-            rows="3"
-          ></textarea
-          ><br /><br />
+          <input
+            type="radio"
+            id="visitConsult"
+            name="visitType"
+            value="consult"
+          />
+          <label for="visitConsult">มาปรึกษาแพทย์</label><br />
 
-          <label for="additionalNote">หมายเหตุเพิ่มเติม</label><br />
-          <textarea
-            id="additionalNote"
-            name="additionalNote"
-            rows="3"
-          ></textarea
-          ><br /><br />
+          <input
+            type="radio"
+            id="visitVaccine"
+            name="visitType"
+            value="vaccine"
+          />
+          <label for="visitVaccine">มาฉีดวัคซีน / ตรวจตามนัด</label><br />
         </fieldset>
 
         <br />
 
-        <button type="submit" id="submitButton">บันทึกข้อมูล</button>
+        <fieldset>
+          <legend>ข้อมูลการนัดหมาย</legend>
+
+          <label for="appointmentDate">วันที่นัด</label><br />
+          <input type="date" id="appointmentDate" /><br /><br />
+
+          <label for="appointmentTime">เวลานัด</label><br />
+          <input type="time" id="appointmentTime" /><br /><br />
+        </fieldset>
+
+        <!-- อาการ -->
+        <fieldset>
+          <legend>อาการที่พบ (กรณีป่วย)</legend>
+
+          <input type="checkbox" id="highFever" />
+          <label for="highFever">มีไข้สูง (≥ 38°C)</label><br />
+
+          <input type="checkbox" id="cough" />
+          <label for="cough">ไอ</label><br />
+
+          <input type="checkbox" id="runnyNose" />
+          <label for="runnyNose">น้ำมูก</label><br />
+
+          <input type="checkbox" id="vomit" />
+          <label for="vomit">อาเจียน</label><br />
+
+          <input type="checkbox" id="diarrhea" />
+          <label for="diarrhea">ท้องเสีย</label><br />
+
+          <input type="checkbox" id="lethargy" />
+          <label for="lethargy">ซึม / ไม่ร่าเริง</label><br /><br />
+
+          <label for="symptomNote">อาการเพิ่มเติม</label><br />
+          <textarea id="symptomNote" rows="3"></textarea>
+        </fieldset>
+
+        <br />
+
+        <!-- แพ้ -->
+        <fieldset>
+          <legend>ประวัติการแพ้</legend>
+
+          <label for="drugAllergy">ยาที่แพ้</label><br />
+          <textarea id="drugAllergy" rows="2"></textarea><br /><br />
+
+          <label for="foodAllergy">อาหารที่แพ้</label><br />
+          <textarea id="foodAllergy" rows="2"></textarea>
+        </fieldset>
+
+        <br />
+
+        <!-- ผลการคัดกรอง -->
+        <fieldset>
+          <legend>ผลการคัดกรอง (ระบบประเมินเบื้องต้น)</legend>
+
+          <p id="screeningResult">ยังไม่ประเมิน</p>
+        </fieldset>
+
+        <br />
+
+        <button type="button" onclick="evaluate()">ประเมินผลคัดกรอง</button>
       </form>
 
       <!-- <h2 id="title"></h2>
@@ -198,6 +177,67 @@
         ]);
         liff.closeWindow();
       };
+
+      async function evaluate() {
+        const visitType = document.querySelector(
+          'input[name="visitType"]:checked'
+        )?.value;
+        const highFever = document.getElementById("highFever").checked;
+        const lethargy = document.getElementById("lethargy").checked;
+
+        let result = "🟢 กลุ่มมาฉีดวัคซีน / ตรวจตามนัด";
+        let placeRegister = "อาคาร 17 ไร่";
+
+        if (visitType === "consult") {
+          result = "🟡 กลุ่มมาปรึกษาแพทย์";
+          placeRegister = "ตึก 100 เตียง";
+        }
+
+        if (visitType === "sick" || highFever || lethargy) {
+          result = "🔴 กลุ่มป่วย / มีอาการ ต้องคัดกรองเร่งด่วน";
+          placeRegister = "ตึก 400 เตียง";
+        }
+
+        document.getElementById("screeningResult").innerText = result;
+
+        var profile = {
+          type: "text",
+          text: [
+            `ข้อมูลเด็ก`,
+            `ชื่อ-นามสกุล: ${childFirstName} ${childLastName}`,
+            `วันเดือนปีเกิด: ${dateOfBirth}`,
+            `อายุ (เดือน): ${ageMonth}`,
+            `ข้อมูลผู้ปกครอง`,
+            `ชื่อ-นามสกุล: ${guardianName}`,
+            `เบอร์ติดต่อ: ${guardianPhone}`,
+          ].join("\n"),
+        };
+        var appointment = {
+          type: "text",
+          text: [
+            `วันเวลาที่นัดหมาย`,
+            `${appointmentDate} ${appointmentTime}`,
+          ].join("\n"),
+        };
+
+        var purpose = {
+          type: "text",
+          text: `วัตถุประสงค์การมาพบแพทย์: ${result}`,
+        };
+
+        var place = {
+          type: "text",
+          text: `ให้ผู้ปกครองไปติดต่อที่ ${placeRegister} ตามวันเวลาที่ทำการนัดหมาย`,
+        };
+        try {
+          await liff.init({ liffId: "2008942006-tbQFVRAB" });
+          if (liff.isLoggedIn()) {
+          }
+          await liff.sendMessages([profile, appointment, purpose, place]);
+        } catch (e) {
+          alert(`err: ${e}`);
+        }
+      }
 
       //   const close = () => {
       //     window.location.href = `index.html?c=${choice}`;
