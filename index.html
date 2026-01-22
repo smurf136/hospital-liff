@@ -94,7 +94,7 @@
           <legend>อาการที่พบ (กรณีป่วย)</legend>
 
           <input type="checkbox" id="highFever" />
-          <label for="highFever">มีไข้สูง (≥ 38°C)</label><br />
+          <label for="highFever">มีไข้สูง (> 37.5°C)</label><br />
 
           <input type="checkbox" id="cough" />
           <label for="cough">ไอ</label><br />
@@ -142,16 +142,13 @@
         <button type="button" id="evaluate">ประเมินผลคัดกรอง</button>
         <button type="button" onclick="go('A')">test</button>
       </form>
-
-      <!-- <h2 id="title"></h2>
-      <p id="desc"></p> -->
     </div>
     <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
     <script>
       let userId = "";
 
       const formatDate = (dateValue) => {
-        if (!dateValue) return "-g";
+        if (!dateValue) return "-";
 
         const date = new Date(dateValue);
 
@@ -306,7 +303,6 @@
             text: `ให้ผู้ปกครองไปติดต่อที่ ${placeRegister} ตามวันเวลาที่ทำการนัดหมาย`,
           };
 
-          // await liff.init({ liffId: "2008942006-tbQFVRAB" });
           if (liff.isLoggedIn()) {
             let liffMessage = [profile, appointment, purpose, allergy, place];
             if (isSick) {
@@ -323,18 +319,14 @@
             },
           ]);
           liff.closeWindow();
-          // alert(`err: ${document.getElementById("e")}`);
         }
       };
-
-      //   const close = () => {
-      //     window.location.href = `index.html?c=${choice}`;
-      //   };
 
       const logOut = () => {
         liff.logout();
         window.location.reload();
       };
+
       const main = async () => {
         await liff.init({ liffId: "2008942006-tbQFVRAB" });
         if (liff.isLoggedIn()) {
