@@ -179,7 +179,7 @@
         liff.closeWindow();
       };
 
-      const evaluate = () => {
+      const evaluate = async () => {
         const visitType = document.querySelector(
           'input[name="visitType"]:checked'
         )?.value;
@@ -254,7 +254,7 @@
           liff.closeWindow();
           // alert(`err: ${document.getElementById("e")}`);
         }
-      }
+      };
 
       //   const close = () => {
       //     window.location.href = `index.html?c=${choice}`;
