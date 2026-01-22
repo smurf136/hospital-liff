@@ -151,7 +151,7 @@
       let userId = "";
 
       function formatDate(dateValue) {
-        if (!dateValue) return '-';
+        if (!dateValue) return "-g";
 
         const date = new Date(dateValue);
 
@@ -295,8 +295,8 @@
           document.getElementById("evaluate").onclick = evaluate;
           // update profile
           profileImage.src = profile.pictureUrl;
-          profileName?.innerText = profile.displayName;
-          profileUID?.innerText = profile.userId;
+          profileName.innerText = profile.displayName;
+          profileUID.innerText = profile.userId;
 
           //   try {
           //     const params = new URLSearchParams(location.search);
