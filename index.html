@@ -150,6 +150,16 @@
     <script>
       let userId = "";
 
+      function formatDate(dateValue) {
+        const date = new Date(dateValue);
+
+        return date.toLocaleDateString("en-GB", {
+          day: "2-digit",
+          month: "short",
+          year: "numeric",
+        });
+      }
+
       const go = async (choice) => {
         const results = {
           A: {
@@ -209,37 +219,45 @@
             type: "text",
             text: [
               `ข้อมูลเด็ก`,
-              `ชื่อ-นามสกุล: ${document.getElementById(
-                "childFirstName"
-              )} ${document.getElementById("childLastName")}`,
-              `วันเดือนปีเกิด: ${document.getElementById("dateOfBirth")}`,
-              `อายุ (เดือน): ${document.getElementById("ageMonth")}`,
+              `ชื่อ-นามสกุล: ${
+                document.getElementById("childFirstName").innerText ?? "-"
+              } ${document.getElementById("childLastName").innerText ?? "-"}`,
+              `วันเดือนปีเกิด: ${
+                document.getElementById("dateOfBirth").innerText ?? "-"
+              }`,
+              `อายุ (เดือน): ${
+                document.getElementById("ageMonth").innerText ?? "-"
+              }`,
               `ข้อมูลผู้ปกครอง`,
-              `ชื่อ-นามสกุล: ${document.getElementById("guardianName")}`,
-              `เบอร์ติดต่อ: ${document.getElementById("guardianPhone")}`,
+              `ชื่อ-นามสกุล: ${
+                document.getElementById("guardianName").innerText ?? "-"
+              }`,
+              `เบอร์ติดต่อ: ${
+                document.getElementById("guardianPhone").innerText ?? "-"
+              }`,
             ].join("\n"),
           };
           var appointment = {
             type: "text",
             text: [
               `วันเวลาที่นัดหมาย`,
-              `${document.getElementById(
-                "appointmentDate"
-              )} ${document.getElementById("appointmentTime")}`,
+              `${formatDate(
+                document.getElementById("appointmentDate").value
+              )} ${document.getElementById("appointmentTime").value}`,
             ].join("\n"),
           };
 
           var purpose = {
             type: "text",
-            text: `วัตถุประสงค์การมาพบแพทย์: ${document.getElementById(
-              "result"
-            )}`,
+            text: `วัตถุประสงค์การมาพบแพทย์: ${
+              document.getElementById("result").innerText ?? "-"
+            }`,
           };
 
           var place = {
             type: "text",
-            text: `ให้ผู้ปกครองไปติดต่อที่ ${document.getElementById(
-              "placeRegister"
+            text: `ให้ผู้ปกครองไปติดต่อที่ ${formateDate(
+              document.getElementById("placeRegister").value
             )} ตามวันเวลาที่ทำการนัดหมาย`,
           };
 
